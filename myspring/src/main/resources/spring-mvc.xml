@@ -10,11 +10,11 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- 注解扫描包 -->
-	<context:component-scan base-package="com.tgb" />
-
+	<context:component-scan base-package="com.tgb.*" />
+	
 	<!-- 开启注解 -->
 	<mvc:annotation-driven />
-
+	
 	<!--
 		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
 	-->
@@ -22,8 +22,6 @@
 	<mvc:resources mapping="/view/js/**" location="/view/js/" />
 	<mvc:resources mapping="/view/css/**" location="/view/css/" />
 	<mvc:resources mapping="/view/html/**" location="/view/html/" />
-
-
 
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
 	<bean id="viewResolver"

@@ -1,23 +1,32 @@
-<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="view/css/logIn.css">
-<script src="view/js/logIn.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wws-nb</title>
+		 <link rel="stylesheet" type="text/css" href="/myspring/view/css/logIn.css">
+</head>
+<body>
 <div  class="login">
 	<div class="login-img">
-		<img src="view/img/email.png">
+		<img src="/myspring/view/img/email.png">
 	</div>
 	<div class="login-header">
 	    <h4>welcome to</h4>
 	    <h2>My App</h2>
 	</div>	  
-	  <div class="login-form">	    
-	    <input type="text" placeholder="Username"/><br>
-	    <input type="password" placeholder="Password"/>
+	  <div class="login-form">
+	  <form action="/myspring/syslogin/loginin" method="POST">	    
+	    <input type="text" name = "username" placeholder="username"/><br>
+	    <input type="password" name= "password" placeholder="password"/>
 	    <br>
-	    <input type="button" value="Login" class="login-button" onclick="showImage()"/>
-	    <img  id="spin" src="view/img/ajax-loader.gif" width="10" height="10">
+	    <input type="submit" value="Login" class="login-button" onclick="showImage()"/>
+	    <img  id="spin" src="/myspring/view/img/ajax-loader.gif" width="10" height="10">
 	    <br>
 	    <a class="forgot-pw">Lost your password?</a>
+	    </form>
 	  </div>
 </div>
-
+<script src="/myspring/view/js/logIn.js"></script>
+</body>
+</html>

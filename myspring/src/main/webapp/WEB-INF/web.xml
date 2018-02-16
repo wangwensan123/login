@@ -12,7 +12,7 @@
 	<!-- 设置Spring容器加载所有的配置文件的路径 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:spring-common.xml</param-value>
+		<param-value>classpath:spring-common.xml</param-value>
 	</context-param>
 
 	<!-- 配置SpringMVC核心控制器 -->
@@ -22,7 +22,7 @@
 		<!-- 配置初始配置化文件,前面contextConfigLocation看情况二选一 -->  
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:spring-mvc.xml</param-value>
+			<param-value>classpath:spring-mvc.xml</param-value>
 		</init-param>
 		<!-- 启动加载一次 -->  
 		<load-on-startup>1</load-on-startup>
@@ -34,7 +34,13 @@
 		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+    <!-- 使用默认的方式进行处理 -->
+  <servlet-mapping>
+      <servlet-name>default</servlet-name>
+      <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+	
 	<!-- 防止Spring内存溢出监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>

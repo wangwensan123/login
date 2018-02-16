@@ -36,6 +36,13 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
+	
+	 public User findByName(String name) {
+
+	    User user = mapper.findByName(name);
+	    
+	    return user;
+	  }
 
 	public void save(User user) {
 

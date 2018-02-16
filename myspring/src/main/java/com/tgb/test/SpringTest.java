@@ -13,8 +13,8 @@ public class SpringTest {
 		 UserMapper userMapper = (UserMapper) ctx.getBean("userMapper");
 		 System.out.println(userMapper);
 		   User user = new User();
-		   user.setAge("18");
-		   user.setUserName("张三");
+		   user.setUserage("18");
+		   user.setUsername("张三");
 		   //user.setId(123);
 		 userMapper.save(user);
 	 }
