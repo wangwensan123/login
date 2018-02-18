@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../view/js/jquery-1.7.1.js"></script>
+<title>用户列表</title>
+
+<script type="text/javascript">
+	function del(id) {
+		$.get("/user/delUser?id=" + id, function(data) {
+			if ("success" == data.result) {
+				alert("删除成功");
+				window.location.reload();
+			} else {
+				alert("删除失败");
+			}
+		});
+	}
+</script>
+</head>
+
+<body>
+	<h6>
+		<a href="/user/toAddUser">添加用户$!userList</a>
+	</h6>
+	<table border="1">
+		<tbody>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+			#foreach($user in $userList)
+			<tr>
+				<td>$!user.userName</td>
+				<td>$!user.age</td>
+				<td><a href="/user/getUser?id=$!user.id">编辑</a> <a
+					href="javascript:del('$!user.id')">删除</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</body>
+</html>

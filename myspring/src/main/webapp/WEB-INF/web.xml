@@ -35,12 +35,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-    <!-- 使用默认的方式进行处理 -->
-  <servlet-mapping>
-      <servlet-name>default</servlet-name>
-      <url-pattern>*.css</url-pattern>
-  </servlet-mapping>
-	
 	<!-- 防止Spring内存溢出监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
@@ -72,10 +66,11 @@
   </filter>  
   <filter-mapping>  
       <filter-name>HiddenHttpMethodFilter</filter-name>  
-      <servlet-name>springMVC3</servlet-name>  
+      <servlet-name>springMVC</servlet-name>  
   </filter-mapping> 
 
 	<welcome-file-list>
-		<welcome-file>view/html/login.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+ 
 </web-app>

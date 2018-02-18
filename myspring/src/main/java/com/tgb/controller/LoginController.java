@@ -25,7 +25,7 @@ public class LoginController {
    * @return
    */
   @RequestMapping("/index")
-  public String getAllUser(HttpServletRequest request){
+  public String index(HttpServletRequest request){
     
     return "/login";
   }
