@@ -7,7 +7,7 @@
   <body>  
    <%  
    	String path = request.getContextPath();
-   response.sendRedirect(path+"/syslogin/index");   
+   response.sendRedirect(path+"/syslogin/beginlogin");   
    %>  
   </body>  
 </html> 
