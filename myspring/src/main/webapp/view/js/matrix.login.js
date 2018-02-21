@@ -35,9 +35,9 @@ function checkLogin(){
             if (data.state == 200) {
                 window.location.href="/myspring/syslogin/index";
             }else if(data.state == 201){
-                showDialog("登陆信息","<span style='color:red;'>抱歉，账号和密码错误，登录失败！</span>");
+            		$("body").dialog({type:"danger",title:"登陆信息",discription:"<span style='color:red;'>抱歉，账号和密码错误，登录失败！</span>"});
             }else{
-                showDialog("登陆信息","<span style='color:red;'>抱歉，你的账号非管理员，不能登录！</span>");
+            		$("body").dialog({type:"danger",title:"登陆信息",discription:"<span style='color:red;'>抱歉，你的账号非管理员，不能登录！</span>"});
             				}
         },    
         error : function() {}    
@@ -75,43 +75,42 @@ $(document).ready(function(){
 	});
 
     $("#changePwd").click(function(){
-
         var username = $("input[name=re_username]").val();
         var password = $("input[name=re_password]").val();
         var confirmpassword = $("input[name=re_confirmpassword]").val();
 
         if ($.trim(username) == "" ||$.trim(password) == "" || $.trim(confirmpassword) == "" ) {
-            showDialog("重置密码信息","<span style='color:red;'>账号、密码和确认密码项不能为空！</span>");
+    					$("body").dialog({type:"warning",title:"表单信息",discription:"<span style='color:red;'>账号、密码和确认密码项不能为空！</span>"});
             return false;
         }
 
-        var flag = validatePwd(password);
+        //var flag = validatePwd(password);
 
-        if (!flag || password.length<6) {
-            showDialog("重置密码信息","<span style='color:red;'>密码必须为英文字符和数字组合，且不能低于6位！</span>");
-            return false;
-        }
+        //if (!flag || password.length<6) {
+          //  showDialog("重置密码信息","<span style='color:red;'>密码必须为英文字符和数字组合，且不能低于6位！</span>");
+            //return false;
+        //}
 
         if (password != confirmpassword) {
-            showDialog("重置密码信息","<span style='color:red;'>密码和确认密码项不一致，请检查！</span>");
+							$("body").dialog({type:"warning",title:"表单信息",discription:"<span style='color:red;'>密码和确认密码项不一致，请检查！</span>"});
             return false;
         }
 
         $.ajax({    
-            url:'/syslogin/loginin?act=admin.forgetPassword',
+            url:'/myspring/syslogin/register',
             data: {
                 username : username,
                 password : password
             				},
             type:'post',   
             success:function(data) {
-                if (data == 1) {
-                    showDialog("重置密码信息","<span style='color:red;'>你好，密码重置成功，请返回登陆！</span>");
-                }else if(data==0){
-                    showDialog("重置密码信息","<span style='color:red;'>你好，密码重置失败，请稍后重试！</span>");
+                if (data.state == 200) {
+                		$("body").dialog({type:"success",title:"注册信息",discription:"<span style='color:red;'>你好，注册成功，请返回登陆！</span>"});
+                }else if(data.state == 201){
+                		$("body").dialog({type:"danger",title:"注册信息",discription:"<span style='color:red;'>你好，注册失败，请返回登陆！</span>"});
                 }else{
-                    showDialog("重置密码信息","<span style='color:red;'>你好，参数异常，请重新填写表单！</span>");
-                }
+                		$("body").dialog({type:"danger",title:"注册信息",discription:"<span style='color:red;'>你好，参数异常，请重新填写表单！</span>"});
+                				}
             },    
             error : function() {     
             }    

@@ -8,11 +8,6 @@
   <name>myspring Maven Webapp</name>
   <dependencies>
     <dependency>
-    	<groupId>aopalliance</groupId>
-    	<artifactId>aopalliance</artifactId>
-    	<version>1.0</version>
-    </dependency>
-    <dependency>
     	<groupId>commons-beanutils</groupId>
     	<artifactId>commons-beanutils</artifactId>
     	<version>1.8.3</version>

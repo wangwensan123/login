@@ -74,14 +74,21 @@ public class LoginController {
    * @param request
    * @return
    */
-  @RequestMapping(value="/register",method=RequestMethod.GET)
-  public String register(User user,HttpServletRequest request){
+  @ResponseBody
+  @RequestMapping(value="/register",method=RequestMethod.POST)
+  public JSONObject register(User user,HttpServletRequest request){
     String username = user.getUsername();
     String password = user.getPassword();
-    String sign = RSA.sign(password, Config.private_key, Config.input_charset);
-    user.setPassword(sign);
-    userService.save(user);
-    return "redirect:/syslogin/beginlogin";   
+    JSONObject json = new JSONObject();
+    if(username!=null&&!username.equals("")&&password!=null&&!password.equals("")){
+      String sign = RSA.sign(password, Config.private_key, Config.input_charset);
+      user.setPassword(sign);
+      userService.save(user);
+      json.put("state", 200);
+    }else{
+      json.put("state", 201);
+          }
+    return json;  
   }
 
 
