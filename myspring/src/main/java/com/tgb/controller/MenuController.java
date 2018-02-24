@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tgb.model.User;
@@ -15,10 +14,9 @@ import com.tgb.service.UserService;
 import com.tgb.util.Config;
 import com.tgb.util.RSA;
 
-
 @Controller
-@RequestMapping("/syslogin")
-public class LoginController {
+@RequestMapping("/sysmenu")
+public class MenuController {
 
 	@Autowired
 	private UserService userService;
@@ -30,11 +28,9 @@ public class LoginController {
    * @return
    */
   @RequestMapping("/beginlogin")
-  public ModelAndView beginlogin(HttpServletRequest request){
-    ModelAndView mv = new ModelAndView();  
-    mv.addObject("message", "Hello World!!!");  
-    mv.setViewName("login.html");  
-    return mv;
+  public String beginlogin(HttpServletRequest request){
+          
+    return "/view/login.html";
   }
   
   /**
@@ -45,7 +41,7 @@ public class LoginController {
  @RequestMapping("/index")
  public String beginindex(HttpServletRequest request){
          
-   return "index.html";
+   return "/view/index.html";
  }
 	
 	/**

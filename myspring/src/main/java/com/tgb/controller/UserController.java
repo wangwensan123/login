@@ -3,10 +3,13 @@ package com.tgb.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,18 +24,33 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	
+	
+	
+  /**
+  * 用户信息跳转
+  * @param request
+  * @return
+  */
+ @RequestMapping("/beginuser")
+ public String beginlogin(HttpServletRequest request){
+         
+   return "user/user.index.html";
+ }	
+	
+	
+	
 	/**
 	 * 获取所有用户列表
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping("/getAllUser")
-	public String getAllUser(HttpServletRequest request){
+	public String getAllUser(Model model){
 		
 		List<User> findAll = userService.findAll();
-		
-		request.setAttribute("userList", findAll);
-		return "/allUser";
+  model.addAttribute("userList",findAll);
+		return "user/user.index.html";
 	}
 	
 	 /**
@@ -40,9 +58,9 @@ public class UserController {
    * @param request
    * @return
    */
-  @ResponseBody
+	 @ResponseBody
   @RequestMapping("/getAllUserJson")
-  public JSONObject getAllUserJson(HttpServletRequest request){
+  public JSONObject getAllUserJson(Model model){
     JSONObject json = new JSONObject();
     List<User> findAll = userService.findAll();         
     json.put("data", findAll);

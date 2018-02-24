@@ -84,12 +84,12 @@ $(document).ready(function(){
             return false;
         }
 
-        //var flag = validatePwd(password);
+//        var flag = validatePwd(password);
 
-        //if (!flag || password.length<6) {
-          //  showDialog("重置密码信息","<span style='color:red;'>密码必须为英文字符和数字组合，且不能低于6位！</span>");
-            //return false;
-        //}
+//        if (!flag || password.length<6) {
+//            showDialog("重置密码信息","<span style='color:red;'>密码必须为英文字符和数字组合，且不能低于6位！</span>");
+//            return false;
+//        }
 
         if (password != confirmpassword) {
 							$("body").dialog({type:"warning",title:"表单信息",discription:"<span style='color:red;'>密码和确认密码项不一致，请检查！</span>"});

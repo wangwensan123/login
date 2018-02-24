@@ -30,7 +30,20 @@
 		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
 		<!--<property name="prefix" value="/view/html/" />
 		<property name="suffix" value=".html" />
-	</bean>-->
+	</bean>-->	
 	
-     
+	<!-- velocity环境配置 -->
+	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+	    <!-- velocity配置文件路径  或者直接用velocityProperties属性 -->
+	    <property name="configLocation" value="classpath:velocity.properties"/>
+	    <!-- velocity模板路径 -->
+	    <property name="resourceLoaderPath" value="/view/"/>
+	</bean>
+	<!-- velocity视图解析器 -->
+	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+	    <property name="order" value="0"/>
+	    <property name="contentType" value="text/html;charset=UTF-8"/>
+	    <property name="cache" value="true"/>
+	</bean>
+			     
 </beans>

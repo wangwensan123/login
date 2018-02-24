@@ -13,6 +13,7 @@ public class User {
 	 private String password;
   private String phone;
   private String sex;
+  
 	public User(){
 		super();
 	}
