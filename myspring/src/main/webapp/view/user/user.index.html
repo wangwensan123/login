@@ -46,7 +46,15 @@
                    <tr class="gradeA">
                    <td>$!f.username</td>
                    <td>$!f.username</td>
-                   <td>$!f.sex</td>
+                   <td>
+	      									#if($!f.sex==1)
+															男
+	      									#elseif($!f.sex==2)
+															女
+													#else
+														未知
+        									#end                   		
+                   </td>
                    <td>$!f.userage</td>
                    <td>$!f.phone</td>
                    <td>

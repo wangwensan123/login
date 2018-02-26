@@ -26,13 +26,23 @@
             <button class="btn btn-info" onclick="javascrtpt:window.location.href='getAllUser'">返回列表</button>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="addUser" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="editUser" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            	<input type="hidden" name="id" id="id" value="$!userinfo.id">
               <div class="control-group">
                 <label class="control-label">姓名</label>
                 <div class="controls">
                   <input type="text" name="username" id="username" value="$!userinfo.username">
                 </div>
               </div>
+              <div class="control-group">
+              <label class="control-label">性别</label>
+              <div class="controls">
+                <select name="sex">
+                  <option value="1" #if($!userinfo.sex==1) selected #end>男</option>
+                  <option value="2" #if($!userinfo.sex==2) selected #end>女</option>
+                </select>
+              </div>
+            </div>
               <div class="control-group">
                 <label class="control-label">年龄</label>
                 <div class="controls">
