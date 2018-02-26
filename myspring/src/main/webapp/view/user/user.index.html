@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Matrix Admin</title>
+<title>用户信息</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="../view/css/bootstrap.min.css" />
@@ -26,6 +26,9 @@
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>用户列表</h5>
           </div>
+          <div class="widget-title">
+            <button type="submit" onclick="javascrtpt:window.location.href='getAddUserPage'" class="btn btn-success">新增</button>
+          </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
               <thead>
@@ -33,16 +36,23 @@
                   <th>账号</th>
                   <th>姓名</th>
                   <th>性别</th>
-                  <th>地址</th>
+                  <th>年龄</th>
+                  <th>电话</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody>
         							#foreach($f in $userList)
                    <tr class="gradeA">
-                   <td>$f.username</td>
-                   <td></td>
-                   <td></td>
-                   <td class="center">-</td>
+                   <td>$!f.username</td>
+                   <td>$!f.username</td>
+                   <td>$!f.sex</td>
+                   <td>$!f.userage</td>
+                   <td>$!f.phone</td>
+                   <td>
+         									<a href="getEditUserPage?id=$f.id" class="btn btn-primary btn-mini">修改</a>
+         									<a href="delUser?id=$f.id" class="btn btn-danger btn-mini">删除</a>
+                   </td>
                    </tr>
                    #end 
               </tbody>

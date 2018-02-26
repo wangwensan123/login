@@ -9,11 +9,15 @@
 <mapper namespace="com.tgb.mapper.UserMapper">
 	
 	<insert id="save" parameterType="User">
-		insert into admin_user(username,userage,password) values(#{username},#{userage},#{password})
+		insert into admin_user(username,userage,password,phone,sex) values(#{username},#{userage},#{password},#{phone},#{sex})
 	</insert>
 	
 	<update id="update" parameterType="User">
-		update admin_user set username=#{username},userage=#{userage} where id=#{id}
+		update admin_user set username=#{username},userage=#{userage},phone=#{phone},sex=#{sex} where id=#{id}
+	</update>
+	
+	<update id="updatePassword" parameterType="User">
+		update admin_user set password=#{password} where id=#{id}
 	</update>
 	
 	<delete id="delete" parameterType="int">
