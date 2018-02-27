@@ -14,7 +14,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/wang" />
+		<property name="url" value="jdbc:mysql://localhost:3306/wws" />
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 	</bean>
@@ -35,7 +35,7 @@
 		basePackage:指定sql映射文件/接口所在的包（自动扫描）
 	-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.tgb.mapper"></property>
+		<property name="basePackage" value="com.wang.mapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 

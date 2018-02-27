@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+	
+ -->
+<mapper namespace="com.wang.mapper.UserMapper">
+	
+	<insert id="save" parameterType="User">
+		insert into admin_user(account,username,userage,password,phone,sex) values(#{account},#{username},#{userage},#{password},#{phone},#{sex})
+	</insert>
+	
+	<update id="update" parameterType="User">
+		update admin_user set username=#{username},userage=#{userage},phone=#{phone},sex=#{sex} where id=#{id}
+	</update>
+	
+	<update id="updatePassword" parameterType="User">
+		update admin_user set password=#{password} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from admin_user where id=#{id}
+	</delete>
+	
+	 <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findById" parameterType="int" resultType="User">
+		select id,account,username,userage,sex,phone,password from admin_user where id=#{id}
+	</select>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findByName" parameterType="String" resultType="User">
+		select id,account,username,userage,sex,phone,password from admin_user where username=#{username}
+	</select>
+	
+		
+	<select id="findAll" resultType="User">
+		select id,account,username,userage,sex,phone from admin_user
+	</select>
+	
+</mapper>
