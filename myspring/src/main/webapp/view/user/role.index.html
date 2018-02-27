@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>用户信息</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../view/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../view/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="../view/css/uniform.css" />
+<link rel="stylesheet" href="../view/css/select2.css" />
+<link rel="stylesheet" href="../view/css/matrix-style2.css" />
+<link rel="stylesheet" href="../view/css/matrix-media.css" />
+<link rel="stylesheet" href="../view/font-awesome/css/font-awesome.css" />
+</head>
+<body>
+
+<div id="content">
+  <div id="content-header">
+      <h1>用户信息</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+ 
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>用户列表</h5>
+          </div>
+          <div class="widget-title">
+            <button type="submit" onclick="javascrtpt:window.location.href='getAddRolePage'" class="btn btn-success">新增</button>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                		<th>ID</th>
+                  <th>角色名称</th>
+                  <th>角色代码</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+        							#foreach($f in $roleList)
+                   <tr class="gradeA">
+                   <td>$!f.id</td>
+                   <td>$!f.rolename</td>
+                   <td>$!f.rolecode</td>
+                   <td>
+         									<a href="getEditRolePage?id=$f.id" class="btn btn-primary btn-mini">修改</a>
+         									<a href="delRole?id=$f.id" class="btn btn-danger btn-mini">删除</a>
+                   </td>
+                   </tr>
+                   #end 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../view/js/jquery.min.js"></script> 
+<script src="../view/js/jquery.ui.custom.js"></script> 
+<script src="../view/js/bootstrap.min.js"></script> 
+<script src="../view/js/jquery.uniform.js"></script> 
+<script src="../view/js/select2.min.js"></script>  
+<script src="../view/js/jquery.dataTables.min.js"></script>
+<script src="../view/js/matrix.js"></script>
+<script src="../view/js/matrix.tables.js"></script> 
+</body>
+</html>

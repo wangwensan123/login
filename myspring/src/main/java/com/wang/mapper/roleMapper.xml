@@ -31,7 +31,7 @@
 	</select>
 	
 		
-	<select id="findAll" resultType="User">
+	<select id="findAll" resultType="Role">
 		select id,rolename,rolecode from admin_role
 	</select>
 	

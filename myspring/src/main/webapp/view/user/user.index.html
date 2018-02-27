@@ -35,6 +35,7 @@
                 <tr>
                   <th>账号</th>
                   <th>姓名</th>
+                  <th>角色</th>
                   <th>性别</th>
                   <th>年龄</th>
                   <th>电话</th>
@@ -44,8 +45,9 @@
               <tbody>
         							#foreach($f in $userList)
                    <tr class="gradeA">
+                   <td>$!f.account</td>
                    <td>$!f.username</td>
-                   <td>$!f.username</td>
+                   <td>$!f.rolename</td>
                    <td>
 	      									#if($!f.sex==1)
 															男
@@ -58,6 +60,7 @@
                    <td>$!f.userage</td>
                    <td>$!f.phone</td>
                    <td>
+                   			<a href="getUserRolePage?id=$f.id" class="btn btn-primary btn-mini">设置角色</a>
          									<a href="getEditUserPage?id=$f.id" class="btn btn-primary btn-mini">修改</a>
          									<a href="delUser?id=$f.id" class="btn btn-danger btn-mini">删除</a>
                    </td>

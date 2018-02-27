@@ -1,9 +1,10 @@
-package com.wang.mapper;
+package com.wang.service;
+
 
 import com.wang.model.UserRole;
 
-public interface UserRoleMapper {
 
+public interface UserRoleService {
 	void save(UserRole userRole);
 	boolean delete(int id);
 	UserRole findById(int id);

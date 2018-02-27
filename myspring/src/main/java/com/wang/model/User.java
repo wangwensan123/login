@@ -14,6 +14,9 @@ public class User {
 	 private String password;
   private String phone;
   private String sex;
+  private int roleid;
+  private String rolename;
+  private String rolecode;
   
 	public User(){
 
@@ -60,6 +63,24 @@ public class User {
   }
   public void setSex(String sex) {
     this.sex = sex;
+  }
+  public int getRoleid() {
+    return roleid;
+  }
+  public void setRoleid(int roleid) {
+    this.roleid = roleid;
+  }
+  public String getRolename() {
+    return rolename;
+  }
+  public void setRolename(String rolename) {
+    this.rolename = rolename;
+  }
+  public String getRolecode() {
+    return rolecode;
+  }
+  public void setRolecode(String rolecode) {
+    this.rolecode = rolecode;
   }
   public User(int id, String userage, String username,String account, String sex, String phone ){
   		this.id = id;

@@ -36,7 +36,7 @@
 	
 		
 	<select id="findAll" resultType="User">
-		select id,account,username,userage,sex,phone from admin_user
+		select u.id id,u.account account,u.username username,u.userage userage,u.sex sex,u.phone phone,ur.roleid,r.rolename rolename,r.rolecode rolecode from admin_user  u LEFT JOIN admin_user_role  ur on u.id = ur.userid LEFT JOIN admin_role r ON ur.roleid = r.id
 	</select>
 	
 </mapper>

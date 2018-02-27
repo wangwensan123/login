@@ -32,5 +32,10 @@ public class Role {
     this.rolecode = rolecode;
   }
 
+  public Role(int id,String rolename,String rolecode){
+    this.id = id;
+    this.rolecode = rolecode;
+    this.rolename = rolename;
+  }
 
 }

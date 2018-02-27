@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wang.model.Role;
 import com.wang.model.User;
+import com.wang.model.UserRole;
+import com.wang.service.RoleService;
+import com.wang.service.UserRoleService;
 import com.wang.service.UserService;
 import com.wang.util.Config;
 import com.wang.util.RSA;
@@ -23,6 +27,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+ @Autowired
+ private RoleService roleService;
+ 
+ @Autowired
+ private UserRoleService userRoleService;
 	
 	/**
 	 * 获取所有用户列表
@@ -92,6 +101,32 @@ public class UserController {
     model.addAttribute("userinfo",user);
     return "user/user.edit.html";
   }
+  
+  /**
+  * 跳转到添加用户界面
+  * @param request
+  * @return
+  */
+ @RequestMapping("/getUserRolePage")
+ public String getUserRolePage(int id,Model model) {
+   User user = userService.findById(id);
+   model.addAttribute("userinfo",user);
+   List<Role> findAll = roleService.findAll();
+   model.addAttribute("roleList",findAll);
+   return "user/user.grantrole.html";
+ }
+ 
+ /**
+  * 添加用户角色并重定向
+  * @param user
+  * @param request
+  * @return
+  */
+ @RequestMapping("/grantUserRole")
+ public String grantUserRole(UserRole userRole,HttpServletRequest request){
+   userRoleService.save(userRole);
+   return "redirect:/user/getAllUser";
+ }
 	
 	 /**
    * 添加用户并重定向
