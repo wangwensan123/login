@@ -6,6 +6,8 @@
 	<!-- 实体类,简称 -设置别名 -->
 	<typeAliases>
 		<typeAlias alias="User" type="com.wang.model.User" />
+		<typeAlias alias="Role" type="com.wang.model.Role" />
+		<typeAlias alias="UserRole" type="com.wang.model.UserRole" />
 	</typeAliases>
 	<!-- 实体接口映射资源 -->
 	<!--
@@ -13,6 +15,8 @@
 	-->
 	<mappers>
 		<mapper resource="com/wang/mapper/userMapper.xml" />
+		<mapper resource="com/wang/mapper/roleMapper.xml" />
+		<mapper resource="com/wang/mapper/userRoleMapper.xml" />
 	</mappers>
 
 </configuration>  

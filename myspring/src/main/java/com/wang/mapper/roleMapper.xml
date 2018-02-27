@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+	
+ -->
+<mapper namespace="com.wang.mapper.RoleMapper">
+	
+	<insert id="save" parameterType="Role">
+		insert into admin_role(rolename,rolecode) values(#{rolename},#{rolecode})
+	</insert>
+	
+	<update id="update" parameterType="Role">
+		update admin_role set rolename=#{rolename},rolecode=#{rolecode} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from admin_role where id=#{id}
+	</delete>
+	
+	 <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findById" parameterType="int" resultType="Role">
+		select id,rolename,rolecode from admin_role where id=#{id}
+	</select>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findByName" parameterType="String" resultType="Role">
+		select id,rolename,rolecode from admin_role where rolename=#{rolename}
+	</select>
+	
+		
+	<select id="findAll" resultType="User">
+		select id,rolename,rolecode from admin_role
+	</select>
+	
+</mapper>
