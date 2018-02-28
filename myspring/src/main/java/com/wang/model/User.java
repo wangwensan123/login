@@ -82,12 +82,15 @@ public class User {
   public void setRolecode(String rolecode) {
     this.rolecode = rolecode;
   }
-  public User(int id, String userage, String username,String account, String sex, String phone ){
+  public User(int id, String userage, String username,String account, String sex, String phone,int roleid, String rolecode, String rolename){
   		this.id = id;
   		this.userage = userage;
   		this.username = username;
   		this.account = account;
   		this.sex = sex;
   		this.phone = phone;
+   this.roleid = roleid;
+   this.rolecode = rolecode;
+   this.rolename = rolename;
 	}
 }

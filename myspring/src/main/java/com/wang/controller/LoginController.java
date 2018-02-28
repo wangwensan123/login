@@ -1,9 +1,11 @@
 package com.wang.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,29 +25,51 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	
-	 /**
-   * 登录页
-   * @param request
-   * @return
-   */
-  @RequestMapping("/beginlogin")
-  public ModelAndView beginlogin(HttpServletRequest request){
-    ModelAndView mv = new ModelAndView();  
-    mv.addObject("message", "Hello World!!!");  
-    mv.setViewName("login.html");  
-    return mv;
-  }
+
+  
+  /**
+  * 登录页
+  * @param request
+  * @return
+  */
+ @RequestMapping("/beginlogin")
+ public ModelAndView beginlogin(HttpServletRequest request){
+   ModelAndView mv = new ModelAndView();  
+   mv.setViewName("login.html");  
+   return mv;
+ }
+ 
+ 
+ /**
+ * 退出
+ * @param request
+ * @return
+ */
+@RequestMapping("/signout")
+public ModelAndView signout(HttpServletRequest request){
+  HttpSession session = request.getSession();
+  session.removeAttribute("userinfo");
+  ModelAndView mv = new ModelAndView(); 
+  mv.setViewName("login.html");  
+  return mv;
+}
   
   /**
   * 首页
   * @param request
   * @return
   */
- @RequestMapping("/index")
- public String beginindex(HttpServletRequest request){
-         
-   return "index.html";
+ @RequestMapping(value ="/index")
+ public String beginindex(HttpServletRequest request,Model model){
+   HttpSession session = request.getSession();
+   User userinfo = (User) session.getAttribute("userinfo");
+   if(null!=userinfo){
+     model.addAttribute("userinfo",userinfo);
+     return "index.html";
+   }else{
+     return "login.html";
+       }
+
  }
 	
 	/**
@@ -66,6 +90,9 @@ public class LoginController {
 	      }
     JSONObject json = new JSONObject();
     if(check){
+      HttpSession session = request.getSession();
+      session.setAttribute("userinfo", userinfo);
+      session.setMaxInactiveInterval(1800);//单位为秒
       json.put("state", 200);
     }else{
       json.put("state", 201);

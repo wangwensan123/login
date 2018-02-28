@@ -24,7 +24,7 @@ function checkLogin(){
         return false;
     	}
     $.ajax({    
-        url:'/myspring/syslogin/logincheck',
+        url:'../syslogin/logincheck',
         data: {
             username : username,
             password : password
@@ -33,7 +33,7 @@ function checkLogin(){
         success:function(data) {
         			console.info(data);
             if (data.state == 200) {
-                window.location.href="/myspring/syslogin/index";
+                window.location.href="../syslogin/index";
             }else if(data.state == 201){
             		$("body").dialog({type:"danger",title:"登陆信息",discription:"<span style='color:red;'>抱歉，账号和密码错误，登录失败！</span>"});
             }else{

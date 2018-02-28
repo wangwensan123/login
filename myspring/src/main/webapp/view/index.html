@@ -23,7 +23,7 @@
             <li  class="dropdown" id="profile-messages" >
                 <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
                     <i class="icon icon-user"></i>&nbsp;
-                    <span class="text">欢迎你，admin</span>&nbsp;
+                    <span class="text">欢迎你，$!userinfo.username</span>&nbsp;
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
                 </ul>
             </li>
             <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">&nbsp;设置</span></a></li>
-            <li class=""><a title="" href="../view/login.html"><i class="icon icon-share-alt"></i> <span class="text">&nbsp;退出系统</span></a></li>
+            <li class=""><a title="" href="../syslogin/signout"><i class="icon icon-share-alt"></i> <span class="text">&nbsp;退出系统</span></a></li>
         </ul>
     </div>
     <!--close-top-Header-menu-->
@@ -51,6 +51,7 @@
             <li class="submenu active">
                 <a class="menu_a" link="../view/index2.html"><i class="icon icon-home"></i> <span>主页</span></a> 
             </li>
+       			#if($!userinfo.rolecode=="administrator"||$!userinfo.rolecode=="manager")
             <li class="submenu"> 
                 <a href="#">
                     <i class="icon icon-table"></i> 
@@ -62,6 +63,7 @@
                     <li><a class="menu_a" link="../role/getAllRole"><i class="icon icon-caret-right"></i>角色查询</a></li>
                 </ul>
             </li>
+         		#end
             <li class="submenu"> 
                 <a href="#">
                     <i class="icon icon-table"></i> 
@@ -123,7 +125,7 @@
     <div id="content">
         <!--breadcrumbs-->
         <div id="content-header">
-          <div id="breadcrumb"> <a href="../view/index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 主页</a></div>
+          <div id="breadcrumb"> <a href="../syslogin/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 主页</a></div>
         </div>
         <!--End-breadcrumbs-->
         <iframe src="../view/index2.html" id="iframe-main" frameborder='0' style="width:100%;"></iframe>

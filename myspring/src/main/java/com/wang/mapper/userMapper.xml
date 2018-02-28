@@ -26,12 +26,12 @@
 	
 	 <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
 	<select id="findById" parameterType="int" resultType="User">
-		select id,account,username,userage,sex,phone,password from admin_user where id=#{id}
+		select u.id id,u.account account,u.password password,u.username username,u.userage userage,u.sex sex,u.phone phone,ur.roleid,r.rolename rolename,r.rolecode rolecode from admin_user  u LEFT JOIN admin_user_role  ur on u.id = ur.userid LEFT JOIN admin_role r ON ur.roleid = r.id where u.id=#{id}
 	</select>
 
 	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
-	<select id="findByName" parameterType="String" resultType="User">
-		select id,account,username,userage,sex,phone,password from admin_user where username=#{username}
+	<select id="findByAccount" parameterType="String" resultType="User">
+		select u.id id,u.account account,u.password password,u.username username,u.userage userage,u.sex sex,u.phone phone,ur.roleid,r.rolename rolename,r.rolecode rolecode from admin_user  u LEFT JOIN admin_user_role  ur on u.id = ur.userid LEFT JOIN admin_role r ON ur.roleid = r.id where u.account=#{account}
 	</select>
 	
 		

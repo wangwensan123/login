@@ -28,7 +28,6 @@
         	<!-- http://themedesigner.in/demo/matrix-admin/login.html-->          
         <form id="loginform" class="form-vertical" action="#">
             <div class="control-group">
-                <label class="control-label">登陆账号</label>
                 <div class="controls">
                     <div class="main_input_box">
                         <span class="add-on bg_lg"><i class="icon-user" style="font-size:16px;"></i></span><input name="username" type="text" value="admin" />
@@ -36,7 +35,6 @@
                 </div>
             </div>
             <div class="control-group2">
-                <label class="control-label">登陆密码</label>
                 <div class="controls">
                     <div class="main_input_box">
                         <span class="add-on bg_ly"><i class="icon-lock" style="font-size:16px;"></i></span><input name="password" type="password" />
@@ -44,49 +42,13 @@
                 </div>
             </div>
             <div class="form-actions">
-                <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">注册新账户</a></span>
-                <span class="pull-right"><input type="button" id="checkBtn" onclick="checkLogin()" class="btn btn-success" style="width:335px;" value=" 登&nbsp;&nbsp;&nbsp;&nbsp;录"/></span>
+                <span style="text-align:center;display:block;"><input type="button" id="checkBtn" onclick="checkLogin()" class="btn btn-success" style="width:310px;" value=" 登&nbsp;&nbsp;&nbsp;&nbsp;录"/></span>
             </div>
             <div class="control-group normal_text">
                 <div style="font-size:14px;color:gray;">推荐使用chrome浏览器</div>
             </div>
         </form>
-        
-
-        <form id="recoverform" action="#" class="form-vertical" style="padding-top:10px;">
-            <label class="control-label">登陆账号</label>
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_lg"><i class="icon-user" style="font-size:16px;"></i></span><input type="text" name="re_username" />
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">新密码</label>
-                <div class="controls">
-                    <div class="main_input_box">
-                        <span class="add-on bg_ly"><i class="icon-lock" style="font-size:16px;"></i></span><input type="password" name="re_password"/>
-                    </div>
-                </div>
-            </div>
-            <div class="control-group" style="padding-top:0px;">
-                <label class="control-label">确认新密码</label>
-                <div class="controls">
-                    <div class="main_input_box">
-                        <span class="add-on bg_ly"><i class="icon-lock" style="font-size:16px;"></i></span><input type="password" name="re_confirmpassword" />
-                    </div>
-                </div>
-            </div>
-            <div class="form-actions">
-                <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; 返回登录</a></span>
-                <span class="pull-right"><a id="changePwd" class="btn btn-info" style="width:310px;">确认</a></span>
-            </div>
-            <div class="control-group normal_text">
-                <div style="font-size:14px;color:gray;">推荐使用chrome浏览器</div>
-            </div>
-        </form>
-
-    </div>
-    
+    </div>    
     <script src="../view/js/jquery.min.js"></script>
     <script src="../view/js/dialog.js"></script>   
     <script src="../view/js/matrix.login.js"></script> 
