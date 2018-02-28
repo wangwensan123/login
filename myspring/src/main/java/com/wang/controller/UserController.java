@@ -3,6 +3,7 @@ package com.wang.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,11 +54,18 @@ public class UserController {
    */
 	 @ResponseBody
   @RequestMapping("/getAllUserJson")
-  public JSONObject getAllUserJson(Model model){
+  public JSONObject getAllUserJson(Model model,HttpServletRequest request){
     JSONObject json = new JSONObject();
-    List<User> findAll = userService.findAll();         
-    json.put("data", findAll);
-    json.put("state", 200);
+	   HttpSession session = request.getSession();
+	   User userinfo = (User) session.getAttribute("userinfo");
+    if(userinfo!=null&&userinfo.getRolecode()!=null&&userinfo.getRolecode().equals("administrator")){
+      List<User> findAll = userService.findAll();         
+      json.put("data", findAll);
+      json.put("state", 200);
+    }else{
+      json.put("message", "您没有权限");
+      json.put("state", 201);
+	       }
     return json;
   }
 	

@@ -7,7 +7,7 @@ Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
     /* inline-block for ie7 */
     zoom: 1;
     *display: inline;
-    vertical-align: top; width:90%;
+    vertical-align: top; width:27.5%;
 }
 .dataTables_length .select2-container{ width:auto!important;}
 .select2-container,
@@ -473,7 +473,7 @@ disabled look for already selected choices in the results dropdown
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
 	.select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice div b {
-		background-image: url(../img/select2x2.png) !important;
+		background-image: url(../img/select2.png) !important;
 		background-repeat: no-repeat !important;
 		background-size: 60px 40px !important;
 	}

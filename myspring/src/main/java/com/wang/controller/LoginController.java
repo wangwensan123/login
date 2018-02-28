@@ -65,6 +65,7 @@ public ModelAndView signout(HttpServletRequest request){
    User userinfo = (User) session.getAttribute("userinfo");
    if(null!=userinfo){
      model.addAttribute("userinfo",userinfo);
+     model.addAttribute("version","1.1");
      return "index.html";
    }else{
      return "login.html";
