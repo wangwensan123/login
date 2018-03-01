@@ -19,7 +19,7 @@
 		}
     }
 
-    loadStyles('http://www.daiwei.org/global/css/animate.css');
+    loadStyles('../view/css/animate.css');
 
 	//显示浮层
     var showMask = function(options) {

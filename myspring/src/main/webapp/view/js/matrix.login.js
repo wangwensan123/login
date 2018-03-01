@@ -21,8 +21,9 @@ function checkLogin(){
     var username = $("input[name=username]").val();
     var password = $("input[name=password]").val();
     if ($.trim(username) == "" ||$.trim(password) == "") {
+    			$("#showmsg").html("<font size='2' color='red'>用户名或密码不能为空！</font>");
         return false;
-    	}
+    	 }
     $.ajax({    
         url:'../syslogin/logincheck',
         data: {
@@ -35,9 +36,11 @@ function checkLogin(){
             if (data.state == 200) {
                 window.location.href="../syslogin/index";
             }else if(data.state == 201){
-            		$("body").dialog({type:"danger",title:"登陆信息",discription:"<span style='color:red;'>抱歉，账号和密码错误，登录失败！</span>"});
+            	$("#showmsg").html("<font size='2' color='red'>抱歉，账号和密码错误，登录失败！</font>");
+            	//$("body").dialog({type:"warning",title:"登陆信息",discription:"<span style='color:red;'>抱歉，账号和密码错误，登录失败！</span>"});
             }else{
-            		$("body").dialog({type:"danger",title:"登陆信息",discription:"<span style='color:red;'>抱歉，你的账号非管理员，不能登录！</span>"});
+            	$("#showmsg").html("<font size='2' color='red'>抱歉，你的账号非管理员，不能登录！</font>");
+            	//$("body").dialog({type:"warning",title:"登陆信息",discription:"<span style='color:red;'>抱歉，你的账号非管理员，不能登录！</span>"});
             				}
         },    
         error : function() {}    

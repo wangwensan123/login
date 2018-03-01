@@ -135,9 +135,34 @@ public class UserController {
    userRoleService.save(userRole);
    return "redirect:/user/getAllUser";
  }
+ 
+ /**
+  * 重置用户密码
+  * @param request
+  * @return
+  */
+  @ResponseBody
+ @RequestMapping("/resetUser")
+ public JSONObject resetUser(int id,Model model,HttpServletRequest request){
+   JSONObject json = new JSONObject();
+    HttpSession session = request.getSession();
+    User userinfo = (User) session.getAttribute("userinfo");
+   if(userinfo!=null&&userinfo.getRolecode()!=null&&userinfo.getRolecode().equals("administrator")){
+     User user = userService.findById(id);
+     String sign = RSA.sign("123456", Config.private_key, Config.input_charset);
+     user.setPassword(sign);
+     userService.updatePassword(user);
+     json.put("message", "重置成功");
+     json.put("state", 200);
+   }else{
+     json.put("message", "您没有权限");
+     json.put("state", 201);
+        }
+   return json;
+ }
 	
 	 /**
-   * 添加用户并重定向
+   * 修改用户信息并重定向
    * @param user
    * @param request
    * @return

@@ -54,6 +54,10 @@ public class UserServiceImpl implements UserService {
 		return mapper.update(user);
 	}
 	
+	 public boolean updatePassword(User user) {
+
+	    return mapper.updatePassword(user);
+	  }
 	
 
 }

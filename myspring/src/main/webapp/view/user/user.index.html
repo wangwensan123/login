@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>用户信息</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="../view/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../view/css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="../view/css/uniform.css" />
-<link rel="stylesheet" href="../view/css/select2.css" />
-<link rel="stylesheet" href="../view/css/matrix-style2.css" />
-<link rel="stylesheet" href="../view/css/matrix-media.css" />
-<link rel="stylesheet" href="../view/font-awesome/css/font-awesome.css" />
+		<title>用户信息</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../view/css/bootstrap.min.css" />
+			<link rel="stylesheet" href="../view/css/bootstrap-responsive.min.css" />
+			<link rel="stylesheet" href="../view/css/uniform.css" />
+			<link rel="stylesheet" href="../view/css/select2.css" />
+			<link rel="stylesheet" href="../view/css/matrix-style2.css" />
+			<link rel="stylesheet" href="../view/css/matrix-media.css" />
+			<link rel="stylesheet" href="../view/font-awesome/css/font-awesome.css" />
+			<link rel="stylesheet" href="../view/css/global.css" />
+			<link rel="stylesheet" href="../view/css/animate.css" />
+			<link rel="stylesheet" href="../view/css/dialog.css" />
 </head>
 <body>
 
@@ -20,12 +23,8 @@
   </div>
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span12">
- 
+      <div class="span12"> 
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>用户列表</h5>
-          </div>
           <div class="widget-title">
             <button type="submit" onclick="javascrtpt:window.location.href='getAddUserPage'" class="btn btn-success">新增</button>
           </div>
@@ -60,6 +59,7 @@
                    <td>$!f.userage</td>
                    <td>$!f.phone</td>
                    <td>
+                   			<a href="javascript:void(0)" onclick="resetpwd($f.id)" class="btn btn-primary btn-mini">重置密码</a>
                    			<a href="getUserRolePage?id=$f.id" class="btn btn-primary btn-mini">设置角色</a>
          									<a href="getEditUserPage?id=$f.id" class="btn btn-primary btn-mini">修改</a>
          									<a href="delUser?id=$f.id" class="btn btn-danger btn-mini">删除</a>
@@ -81,6 +81,29 @@
 <script src="../view/js/jquery.uniform.js"></script> 
 <script src="../view/js/select2.min.js"></script>  
 <script type="text/javascript">
+function resetpwd(id){
+	$('body').dialog({type:'primary',title:'重置密码',discription:"<span>确认重置密码？</span>"},
+			function(ret){
+				if(ret.index===0){
+				    $.ajax({    
+				        url:'../user/resetUser',
+				        data: {
+				        		id : id
+				        			},
+				        type:'get',   
+				        success:function(data) {
+				            if (data.state == 200) {
+           	 					 alert("重置密码成功！");
+				            }else{
+				            	 alert("重置密码失败！");
+				            				}
+				        			}  
+				    });
+				};
+			}
+	)
+}	
+
 function load(){
     $.ajax({    
         url:'../user/getAllUserJson',
@@ -110,10 +133,10 @@ function load(){
         error : function() {}    
     });
 }		
-//load();
 </script>
 <script src="../view/js/jquery.dataTables.min.js"></script>
 <script src="../view/js/matrix.js"></script>
-<script src="../view/js/matrix.tables.js"></script> 
+<script src="../view/js/matrix.tables.js"></script>
+<script src="../view/js/dialog.js"></script>  
 </body>
 </html>
