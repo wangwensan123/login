@@ -37,9 +37,9 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 	
-	 public User findByName(String name) {
+	 public User findByAccount(String account) {
 
-	    User user = mapper.findByAccount(name);
+	    User user = mapper.findByAccount(account);
 	    
 	    return user;
 	  }

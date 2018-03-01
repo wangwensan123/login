@@ -84,7 +84,7 @@ public ModelAndView signout(HttpServletRequest request){
 	public JSONObject logincheck(User user,HttpServletRequest request){
 	  String username = user.getUsername();
 	  String password = user.getPassword();
-	  User userinfo = userService.findByName(username);
+	  User userinfo = userService.findByAccount(username);
 	  boolean check = false;
 	  if(null!=userinfo){
 	     check = RSA.verify(password, userinfo.getPassword(), Config.public_key, Config.input_charset);

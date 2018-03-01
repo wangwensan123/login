@@ -87,15 +87,35 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/addUser")
-	public String addUser(User user,HttpServletRequest request){
-		String username = user.getUsername();
+	public String addUser(User user,HttpServletRequest request,Model model){
+		String account = user.getAccount();
 		String password = user.getPassword();
-  if(username!=null&&!username.equals("")&&password!=null&&!password.equals("")){
-      String sign = RSA.sign(password, Config.private_key, Config.input_charset);
-      user.setPassword(sign);
-      userService.save(user);
+		String password1 = request.getParameter("password1");
+		boolean flag = false;
+  if(account!=null&&!account.equals("")&&password!=null&&!password.equals("")&&password1!=null&&!password1.equals("")){
+      if(!password.equals(password1)){
+        model.addAttribute("message","两次设置密码不一样！");
+      }else{
+        User userinfo = userService.findByAccount(account);
+        if(userinfo==null){
+          String sign = RSA.sign(password, Config.private_key, Config.input_charset);
+          user.setPassword(sign);
+          userService.save(user);
+          flag = true;
+        }else{
+          model.addAttribute("message","账号重复！");
+                }
+              }
+  }else{
+    model.addAttribute("message","账号或密码为空！");
     }
-		return "redirect:/user/getAllUser";
+  if(flag){
+    return "redirect:/user/getAllUser";
+  }else{
+    model.addAttribute("userinfo",user);
+    return "user/user.add.html";
+    }
+
 	}
 	
 	 /**

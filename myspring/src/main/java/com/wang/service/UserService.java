@@ -11,6 +11,6 @@ public interface UserService {
 	boolean updatePassword(User user);
 	boolean delete(int id);
 	User findById(int id);
-	User findByName(String username);
+	User findByAccount(String account);
 	List<User> findAll();
 }

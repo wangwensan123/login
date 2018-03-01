@@ -30,48 +30,49 @@
               <div class="control-group">
                 <label class="control-label">姓名</label>
                 <div class="controls">
-                  <input type="text" name="username" id="username">
+                  <input type="text" name="username" required=true maxlength=20 id="username" value ="$!userinfo.username">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">账号</label>
                 <div class="controls">
-                  <input type="text" name="account" id="account">
+                  <input type="text" name="account" required=true maxlength=20 id="account" value ="$!userinfo.account">
                 </div>
               </div>
               <div class="control-group">
               <label class="control-label">性别</label>
               <div class="controls">
                 <select name="sex">
-                  <option value="1">男</option>
-                  <option value="2">女</option>
+                  <option value="1" #if($!userinfo.sex==1) selected #end>男</option>
+                  <option value="2" #if($!userinfo.sex==2) selected #end>女</option>
                 </select>
               </div>
             </div>
               <div class="control-group">
                 <label class="control-label">年龄</label>
                 <div class="controls">
-                  <input type="text" name="userage" id="userage">
+                  <input type="number" name="userage" id="userage" value="$!userinfo.userage">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">电话</label>
+                <label class="control-label">手机号码</label>
                 <div class="controls">
-                  <input type="text" name="phone" id="phone">
+                  <input type="text" name="phone" id="phone" value="$!userinfo.phone">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">密码</label>
                 <div class="controls">
-                  <input type="password" name="password" id="password">
+                  <input type="password" required=true maxlength=20 name="password" id="password">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">重复密码</label>
                 <div class="controls">
-                  <input type="password" name="password1" id="password1">
+                  <input type="password" required=true equalTo="#password" name="password1" id="password1">
                 </div>
               </div>
+      					<div>#if($!message) <font color = "red">$!message</font> #end</div>
               <div class="form-actions">
                 <input type="submit" value="提交" class="btn btn-success">
               </div>
@@ -90,6 +91,6 @@
 <script src="../view/js/select2.min.js"></script> 
 <script src="../view/js/jquery.validate.js"></script> 
 <script src="../view/js/matrix.js"></script> 
-<script src="../view/js/matrix.form_validation.js"></script>
+<script src="../view/js/matrix.form_validation.js"></script> 
 </body>
 </html>
