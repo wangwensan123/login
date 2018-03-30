@@ -14,6 +14,11 @@
 	
 	<!-- 开启注解 -->
 	<mvc:annotation-driven />
+  
+   	<!-- 开启shiro注解支持 -->
+  <!-- <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+      <property name="securityManager" ref="securityManager" />
+  </bean> -->
 	
 	<!--
 		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd

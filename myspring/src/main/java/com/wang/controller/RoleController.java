@@ -1,12 +1,18 @@
 package com.wang.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.wang.login.SystemAuthenticationRealm;
 import com.wang.model.Role;
+import com.wang.model.User;
 import com.wang.service.RoleService;
 
 
@@ -24,11 +30,12 @@ public class RoleController {
 	 * @return
 	 */
 	@RequestMapping("/getAllRole")
-	public String getAllRole(Model model){
-		
-		List<Role> findAll = roleService.findAll();
-  model.addAttribute("roleList",findAll);
-		return "user/role.index.html";
+	public String getAllRole(HttpServletRequest request,Model model){
+   HttpSession session = request.getSession();
+   User userinfo = (User) session.getAttribute(SystemAuthenticationRealm.SESSION_USER_KEY);
+  		List<Role> findAll = roleService.findAll();
+    model.addAttribute("roleList",findAll);
+		  return "user/role.index.html";
 	}
 	
 	/**
