@@ -4,6 +4,11 @@ package com.wang.test;
  *@date 2018年3月29日---下午12:29:03
  *
  **/
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -34,6 +39,15 @@ public class RedisTest {
         System.out.println("得到的数据：" + re);
         long size = redisCache.hsize(key);
         System.out.println("数量为：" + size);
+        Map map = new HashMap();
+        map.put("aa", "aa");       
+        redisCache.hset("aa", "aa", map);
+        Map map1 = redisCache.getMap("aa", "aa");
+        Set set = map1.entrySet();
+        for(Object obj:set){
+          Entry  entry = (Entry)obj;
+          System.out.println("key="+entry.getKey()+",value="+entry.getValue());
+                   }
     }
 
 }

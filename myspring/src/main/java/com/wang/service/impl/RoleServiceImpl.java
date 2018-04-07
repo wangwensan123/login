@@ -10,7 +10,7 @@ import com.wang.service.RoleService;
 
 
 
-@Service
+@Service(value="roleService")
 @Transactional  //此处不再进行创建SqlSession和提交事务，都已交由spring去管理了。
 public class RoleServiceImpl implements RoleService {
 	

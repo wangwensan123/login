@@ -4,7 +4,11 @@ package com.wang.util;
  *@date 2018年3月29日---下午12:19:02
  *
  **/
+import java.util.Map;
+
 import javax.annotation.Resource;
+
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class RedisCacheUtil {
 
     @Resource
-    private StringRedisTemplate  redisTemplate;
+    private RedisTemplate  redisTemplate;
     
     /**
      * 向Hash中添加值
@@ -31,6 +35,13 @@ public class RedisCacheUtil {
         redisTemplate.opsForHash().put(key, field, value);
     }
     
+    public void hset(String key, String field, Map value) {
+      if(key == null || "".equals(key)){
+          return ;
+                  }
+      redisTemplate.opsForHash().put(key, field, value);
+  }
+    
     /**
      * 从redis中取出值
      * @param key
@@ -43,6 +54,13 @@ public class RedisCacheUtil {
         }
         return (String) redisTemplate.opsForHash().get(key, field);
     }
+    
+    public Map getMap(String key, String field){
+      if(key == null || "".equals(key)){
+          return null;
+      }
+      return (Map) redisTemplate.opsForHash().get(key, field);
+  }
     
     /**
      * 判断 是否存在 key 以及 hash key

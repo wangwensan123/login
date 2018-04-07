@@ -45,7 +45,7 @@
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.2/commons-io-2.2.jar" sourcepath="M2_REPO/commons-io/commons-io/2.2/commons-io-2.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/alibaba/dubbo/2.5.8/dubbo-2.5.8.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/alibaba/dubbo/2.5.8/dubbo-2.5.8.jar" sourcepath="/M2_REPO/com/alibaba/dubbo/2.5.8/dubbo-2.5.8-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/netty/netty/3.2.5.Final/netty-3.2.5.Final.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/velocity/velocity/1.7/velocity-1.7.jar" sourcepath="M2_REPO/org/apache/velocity/velocity/1.7/velocity-1.7-sources.jar"/>
@@ -89,17 +89,15 @@
 	<classpathentry kind="var" path="M2_REPO/org/apache/shiro/shiro-event/1.4.0/shiro-event-1.4.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar" sourcepath="M2_REPO/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar" sourcepath="/M2_REPO/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_65">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_65">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
