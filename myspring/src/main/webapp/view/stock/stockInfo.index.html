@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>股票公司信息</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../view/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../view/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="../view/css/uniform.css" />
+<link rel="stylesheet" href="../view/css/select2.css" />
+<link rel="stylesheet" href="../view/css/matrix-style2.css" />
+<link rel="stylesheet" href="../view/css/matrix-media.css" />
+<link rel="stylesheet" href="../view/font-awesome/css/font-awesome.css" />
+</head>
+<body>
+
+<div id="content">
+  <div id="content-header">
+      <h1>股票公司信息</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                		<th>ID</th>
+                  <th>公司代码</th>
+                  <th>公司简称</th>
+                  <th>注册地址</th>
+                  <th>上市日期</th>
+                  <th>所属行业</th>
+                  <th>公司网址</th>
+                </tr>
+              </thead>
+              <tbody>
+        							#foreach($f in $stockInfoList)
+                   <tr class="gradeA">
+                   <td>$!f.id</td>
+                   <td>$!f.code</td>
+                   <td>$!f.abbreviation</td>
+                   <td>$!f.address</td>
+                   <td>$!f.list_date</td>
+                   <td>$!f.industry</td>
+                   <td>$!f.website</td>
+                   </tr>
+                   #end 
+              </tbody>
+            </table>
+          </div>
+						#parse('/common/paging.html')
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../view/js/jquery.min.js"></script> 
+<script src="../view/js/jquery.ui.custom.js"></script> 
+<script src="../view/js/bootstrap.min.js"></script> 
+<script src="../view/js/jquery.uniform.js"></script> 
+</body>
+</html>

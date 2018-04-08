@@ -1,28 +1,3 @@
-/**
- * @summary     DataTables
- * @description Paginate, search and sort HTML tables
- * @version     1.9.4
- * @file        jquery.dataTables.js
- * @author      Allan Jardine (www.sprymedia.co.uk)
- * @contact     www.sprymedia.co.uk/contact
- *
- * @copyright Copyright 2008-2012 Allan Jardine, all rights reserved.
- *
- * This source file is free software, under either the GPL v2 license or a
- * BSD style license, available at:
- *   http://datatables.net/license_gpl2
- *   http://datatables.net/license_bsd
- * 
- * This source file is distributed in the hope that it will be useful, but 
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
- * or FITNESS FOR A PARTICULAR PURPOSE. See the license files for details.
- * 
- * For details please refer to: http://www.datatables.net
- */
-
-/*jslint evil: true, undef: true, browser: true */
-/*globals $, jQuery,define,_fnExternApiFunc,_fnInitialise,_fnInitComplete,_fnLanguageCompat,_fnAddColumn,_fnColumnOptions,_fnAddData,_fnCreateTr,_fnGatherData,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnServerParams,_fnAddOptionsHtml,_fnFeatureHtmlTable,_fnScrollDraw,_fnAdjustColumnSizing,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnBuildSearchArray,_fnBuildSearchRow,_fnFilterCreateSearch,_fnDataToSearch,_fnSort,_fnSortAttachListener,_fnSortingClasses,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnFeatureHtmlLength,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnNodeToDataIndex,_fnVisbleColumns,_fnCalculateEnd,_fnConvertToWidth,_fnCalculateColumnWidths,_fnScrollingWidthAdjust,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnDetectType,_fnSettingsFromNode,_fnGetDataMaster,_fnGetTrNodes,_fnGetTdNodes,_fnEscapeRegex,_fnDeleteIndex,_fnReOrderIndex,_fnColumnOrdering,_fnLog,_fnClearTable,_fnSaveState,_fnLoadState,_fnCreateCookie,_fnReadCookie,_fnDetectHeader,_fnGetUniqueThs,_fnScrollBarWidth,_fnApplyToChildren,_fnMap,_fnGetRowData,_fnGetCellData,_fnSetCellData,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnApplyColumnDefs,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnJsonString,_fnRender,_fnNodeToColumnIndex,_fnInfoMacros,_fnBrowserDetect,_fnGetColumns*/
-
 (/** @lends <global> */function( window, document, undefined ) {
 
 (function( factory ) {
@@ -43,42 +18,8 @@
 }
 (/** @lends <global> */function( $ ) {
 	"use strict";
-	/** 
-	 * DataTables is a plug-in for the jQuery Javascript library. It is a 
-	 * highly flexible tool, based upon the foundations of progressive 
-	 * enhancement, which will add advanced interaction controls to any 
-	 * HTML table. For a full list of features please refer to
-	 * <a href="http://datatables.net">DataTables.net</a>.
-	 *
-	 * Note that the <i>DataTable</i> object is not a global variable but is
-	 * aliased to <i>jQuery.fn.DataTable</i> and <i>jQuery.fn.dataTable</i> through which 
-	 * it may be  accessed.
-	 *
-	 *  @class
-	 *  @param {object} [oInit={}] Configuration object for DataTables. Options
-	 *    are defined by {@link DataTable.defaults}
-	 *  @requires jQuery 1.3+
-	 * 
-	 *  @example
-	 *    // Basic initialisation
-	 *    $(document).ready( function {
-	 *      $('#example').dataTable();
-	 *    } );
-	 *  
-	 *  @example
-	 *    // Initialisation with configuration options - in this case, disable
-	 *    // pagination and sorting.
-	 *    $(document).ready( function {
-	 *      $('#example').dataTable( {
-	 *        "bPaginate": false,
-	 *        "bSort": false 
-	 *      } );
-	 *    } );
-	 */
 	var DataTable = function( oInit )
 	{
-		
-		
 		/**
 		 * Add a column to the list used for the table with default values
 		 *  @param {object} oSettings dataTables settings object
@@ -127,9 +68,7 @@
 			
 			/* Use the column options function to initialise classes etc */
 			_fnColumnOptions( oSettings, iCol, null );
-		}
-		
-		
+		}	
 		/**
 		 * Apply options for a column
 		 *  @param {object} oSettings dataTables settings object
@@ -213,8 +152,7 @@
 				oCol.sSortingClassJUI = oSettings.oClasses.sSortJUIDescAllowed;
 			}
 		}
-		
-		
+
 		/**
 		 * Adjust the table column widths for new data. Note: you would probably want to 
 		 * do a redraw after calling this function!
@@ -235,8 +173,7 @@
 				oSettings.aoColumns[i].nTh.style.width = oSettings.aoColumns[i].sWidth;
 			}
 		}
-		
-		
+
 		/**
 		 * Covert the index of a visible column to the index in the data array (take account
 		 * of hidden columns)
@@ -253,8 +190,6 @@
 				aiVis[iMatch] :
 				null;
 		}
-		
-		
 		/**
 		 * Covert the index of an index in the data array and convert it to the visible
 		 *   column index (take account of hidden columns)
@@ -270,8 +205,7 @@
 		
 			return iPos !== -1 ? iPos : null;
 		}
-		
-		
+
 		/**
 		 * Get the number of visible columns
 		 *  @param {object} oSettings dataTables settings object
@@ -282,7 +216,6 @@
 		{
 			return _fnGetColumns( oSettings, 'bVisible' ).length;
 		}
-		
 		
 		/**
 		 * Get an array of column indexes that match a given property
@@ -303,8 +236,7 @@
 			} );
 		
 			return a;
-		}
-		
+		}		
 		
 		/**
 		 * Get the sort type based on an input string
@@ -327,8 +259,7 @@
 			}
 			
 			return 'string';
-		}
-		
+		}		
 		
 		/**
 		 * Figure out how to reorder a display list
@@ -354,8 +285,7 @@
 			}
 			
 			return aiReturn;
-		}
-		
+		}		
 		
 		/**
 		 * Get the column ordering that DataTables expects
@@ -375,8 +305,7 @@
 				return "";
 			}
 			return sNames.slice(0, -1);
-		}
-		
+		}		
 		
 		/**
 		 * Take the column definitions and static columns arrays and calculate how
@@ -11560,6 +11489,9 @@
 			 */
 			"fnInit": function ( oSettings, nPaging, fnCallbackDraw )
 			{
+				console.info("oSettings="+oSettings);
+				console.info("nPaging="+nPaging);
+				console.info("fnCallbackDraw="+fnCallbackDraw);
 				var oLang = oSettings.oLanguage.oPaginate;
 				var oClasses = oSettings.oClasses;
 				var fnClickHandler = function ( e ) {

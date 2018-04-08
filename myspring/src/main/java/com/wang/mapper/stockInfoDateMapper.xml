@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+	
+ -->
+<mapper namespace="com.wang.mapper.StockInfoDateMapper">
+	
+	<insert id="save" parameterType="StockInfoDate">
+		insert into stock_info_date(code,date,open,close,high,low,volume,rate) values(#{code},#{date},#{open},#{close},#{high},#{low},#{volume},#{rate})
+	</insert>
+	
+	<update id="update" parameterType="StockInfoDate">
+		update stock_info_date set code=#{code},date=#{date},open=#{open},close=#{close},high=#{high},low=#{low},volume=#{volume},rate=#{rate} where id=#{id}
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		delete from stock_info_date where id=#{id}
+	</delete>
+	
+	 <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findById" parameterType="int" resultType="StockInfoDate">
+		select id,code,date,open,close,high,low,volume,rate from stock_info_date where id=#{id}
+	</select>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findByCode" parameterType="String" resultType="StockInfoDate">
+			select id,code,date,open,close,high,low,volume,rate from stock_info_date where code=#{code}
+	</select>
+	
+		<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findByCondition" parameterType="Map" resultType="StockInfoDate">
+			select id,code,date,open,close,high,low,volume,rate from stock_info_date where 1=1
+			<if test="code != null and code != ''">
+				and code=#{code}
+			</if>
+			<if test="date != null and date != ''">
+				and date=#{date}
+			</if>
+			limit #{start},#{limit}
+	</select>
+	
+		<select id="countByCondition" parameterType="Map" resultType="int">
+			select count(id) from stock_info_date where 1=1
+			<if test="code != null and code != ''">
+				and code=#{code}
+			</if>
+			<if test="date != null and date != ''">
+				and date=#{date}
+			</if>
+	</select>
+	
+		
+	<select id="findAll" resultType="StockInfoDate">
+			select id,code,date,open,close,high,low,volume,rate from stock_info_date
+	</select>
+	
+</mapper>

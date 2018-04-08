@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+	
+ -->
+<mapper namespace="com.wang.mapper.StockInfoMapper">
+	
+	<insert id="save" parameterType="StockInfo">
+		insert into stock_info(code,abbreviation,a_code,a_abbreviation,list_date,all_equity,circulation_equity) values(#{code},#{abbreviation},#{a_code},#{a_abbreviation},#{list_date},#{all_equity},#{circulation_equity})
+	</insert>
+	
+	<update id="update" parameterType="StockInfo">
+		update stock_info set code=#{code},abbreviation=#{abbreviation},list_date=#{list_date},all_equity=#{all_equity} where id=#{id}
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		delete from stock_info where id=#{id}
+	</delete>
+	
+	 <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findById" parameterType="int" resultType="StockInfo">
+		select id,code,abbreviation,fullname,englishname,address,a_code,a_abbreviation,list_date,all_equity,circulation_equity,industry,website from stock_info where id=#{id}
+	</select>
+
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->  
+	<select id="findByCode" parameterType="String" resultType="StockInfo">
+			select id,code,abbreviation,fullname,englishname,address,a_code,a_abbreviation,list_date,all_equity,circulation_equity,industry,website from stock_info where code=#{code}
+	</select>
+	
+		
+	<select id="findAll" resultType="StockInfo">
+			select id,code,abbreviation,fullname,englishname,address,a_code,a_abbreviation,list_date,all_equity,circulation_equity,industry,website from stock_info
+	</select>
+	
+	<select id="findByCondition" parameterType="Map" resultType="StockInfo">
+			select id,code,abbreviation,fullname,englishname,address,a_code,a_abbreviation,list_date,all_equity,circulation_equity,industry,website from stock_info where 1=1
+			<if test="code != null and code != ''">
+				and code=#{code}
+			</if>
+			<if test="abbreviation != null and abbreviation != ''">
+				and abbreviation LIKE CONCAT('%',#{abbreviation},'%')
+			</if>
+			limit #{start},#{limit}
+	</select>
+	
+		<select id="countByCondition" parameterType="Map" resultType="int">
+			select count(id) from stock_info where 1=1
+			<if test="code != null and code != ''">
+				and code=#{code}
+			</if>
+			<if test="abbreviation != null and abbreviation != ''">
+				and abbreviation LIKE CONCAT('%',#{abbreviation},'%')
+			</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,96 @@
+<div class="fg-toolbar ui-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix">
+		<div>
+			<input type ="hidden" value = "$!total" id = "total" />
+			<input type ="hidden" value = "$!start" id = "start" />
+			<input type ="hidden" value = "$!limit" id = "limit" />
+			<input type ="hidden" value = "$!pageurl" id = "pageurl" />
+		</div>
+   <div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_full_numbers" id="DataTables_Table_0_paginate">
+   		#set($model=$!total%$!limit)
+   		#set($allpage=$!total/$!limit)
+ 			#if($model>0)
+ 				#set($allpage=$allpage+1)
+ 			#end
+   			总共$!total条数据/总共$allpage页
+    <a tabindex="0" class="first ui-corner-tl ui-corner-bl fg-button ui-button ui-state-default" id="DataTables_Table_0_first" href='javascript:;' onclick='first_page()'>第一页</a>
+    <a tabindex="0" class="previous fg-button ui-button ui-state-default" id="DataTables_Table_0_previous" href='javascript:;' onclick='pre_page()'>上一页</a>
+    <span>
+    				#set($allpage=$!total/$!limit)
+    				#set($currentpage=$!start/$!limit)  							
+    				#if($allpage>5)
+   							#set($page=$allpage - $currentpage)
+    						#if($page>5)
+   									#set($currentpage5=$currentpage + 5)
+							    	#foreach($f in [$currentpage..$currentpage5])
+							    			#set($f1=$f + 1)
+				    					<a tabindex="0" class="fg-button ui-button ui-state-default #if($currentpage==$f)ui-state-disabled#end" href='javascript:;' onclick='goto_num($f1)'>$f1</a>
+				    				#end
+    						#else
+    								#set($allpage5=$allpage - 5)
+							    	#foreach($f in [$allpage5..$allpage])
+							    		#set($f1=$f + 1)
+				    					<a tabindex="0" class="fg-button ui-button ui-state-default #if($currentpage==$f)ui-state-disabled#end" href='javascript:;' onclick='goto_num($f1)'>$f1</a>
+				    				#end
+    						#end
+    				#else
+    						#foreach($f in [1..$allpage])
+   									<a tabindex="0" class="fg-button ui-button ui-state-default" href='javascript:;' onclick='goto_num($f)'>$f</a>
+    						#end
+						#end			
+
+			</span>
+			<a tabindex="0" class="next fg-button ui-button ui-state-default" id="DataTables_Table_0_next" href='javascript:;' onclick='next_page()'>下一页</a>
+			<a tabindex="0" class="last ui-corner-tr ui-corner-br fg-button ui-button ui-state-default" id="DataTables_Table_0_last" href='javascript:;' onclick='last_page()'>最后一页</a>
+		</div>
+		<script>
+		function first_page(){
+			$("#start").val(0);
+			_goto_page()
+		}
+		
+		function pre_page(){
+			var start = parseInt($("#start").val());
+			var limit = parseInt($("#limit").val());
+			if(start-limit>0){
+				$("#start").val(start-limit);
+			}else{
+				$("#start").val(0);
+			}
+			_goto_page()
+		}
+		
+		function next_page(){
+			var start = parseInt($("#start").val());
+			var limit = parseInt($("#limit").val());
+			var total = parseInt($("#total").val());
+			if(start+limit<total){
+				$("#start").val(start+limit);
+			}else{
+				$("#start").val(total);
+			}
+			_goto_page()
+		}
+		
+		function last_page(){
+			var start = parseInt($("#start").val());
+			var limit = parseInt($("#limit").val());
+			var total = parseInt($("#total").val());
+			$("#start").val(parseInt(total/limit)*limit);
+			_goto_page()
+		}
+		
+		function goto_num(num){
+			var limit = parseInt($("#limit").val());
+			$("#start").val((num-1)*limit);
+			_goto_page()
+		}
+		
+			function _goto_page(){
+				var pageurl = $("#pageurl").val();
+				var start = $("#start").val();
+				var limit = $("#limit").val();
+				window.location.href = '..'+pageurl+'&start='+start+'&limit='+limit;
+			}
+		</script>
+</div>
+
