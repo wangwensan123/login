@@ -11,7 +11,7 @@ public interface StockInfoDateService {
   boolean delete(int id);
   StockInfoDate findById(int id);
   List<StockInfoDate> findByCode(String code);
-  List<StockInfoDate> findByCondition(Map map);
+  List<StockInfoDate> findByCondition(Map map,int start,int limit);
   int countByCondition(Map map);
   List<StockInfoDate> findAll();
 }

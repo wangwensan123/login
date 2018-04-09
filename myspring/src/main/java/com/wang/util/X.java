@@ -6,11 +6,15 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.ui.Model;
 
 /**
  * The {@code X} Class used to define contains.
@@ -550,6 +554,25 @@ public final class X {
     if (s.length() > 1)
       return s;
     return "0" + s;
+  }
+  
+  
+  public static void setPageInfo(int total,int start,int limit,String url,Model model,Map map){
+    model.addAttribute("total",total);
+    model.addAttribute("start",start);
+    model.addAttribute("limit",limit);
+    String pageurl = url+"?1=1";
+    if(null!=map&&map.size()>0){
+    Set<Entry<String, Object>> entry = map.entrySet();
+    Iterator<Entry<String, Object>> ite = entry.iterator();
+    while (ite.hasNext()) {
+      Entry<String, Object> aa = ite.next();
+      if(null!=aa.getKey()&&!aa.getKey().equals("start")&&!aa.getKey().equals("limit")){
+        pageurl += "&"+aa.getKey() + "=" + aa.getValue();
+              }
+          }
+        }
+    model.addAttribute("pageurl", pageurl);
   }
 
 }

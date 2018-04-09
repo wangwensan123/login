@@ -47,8 +47,9 @@ public class StockInfoDateServiceImpl implements StockInfoDateService {
 	    return list;
 	  }
 	 
-   public List<StockInfoDate> findByCondition(Map map) {
-
+   public List<StockInfoDate> findByCondition(Map map,int start,int limit) {
+     map.put("start", start);
+     map.put("limit", limit);
      List<StockInfoDate>  list = mapper.findByCondition(map);
       
       return list;

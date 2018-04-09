@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wang.model.StockInfo;
 import com.wang.service.StockInfoService;
+import com.wang.util.X;
 
 
 @Controller
@@ -29,21 +30,25 @@ public class StockInfoController {
 	 */
 	@RequestMapping("/getAllStockInfo")
 	public String getAllStockInfo(HttpServletRequest request,Model model){
-	   Map map = new HashMap();
-    String s = request.getParameter("start");
-    String n = request.getParameter("limit");
-	   int start = s==null?0:Integer.parseInt(s);
-	   int limit = n==null?10:Integer.parseInt(n);
-	   map.put("start", start);
-	   map.put("limit", limit);
+	     Map map = new HashMap();
+	    int start = X.toInt(request.getParameter("start"), 0);
+	    int limit = X.toInt(request.getParameter("limit"), 10);
+  	   map.put("start", start);
+  	   map.put("limit", limit);
+	    String code = request.getParameter("code");
+	    String abbreviation = request.getParameter("abbreviation");
+	    if(null!=code&&!code.equals("")){
+	      map.put("code", code);
+	        }
+	    if(null!=abbreviation&&!abbreviation.equals("")){
+	      map.put("abbreviation", abbreviation);
+	        } 
   		List<StockInfo> findAll = stockInfoService.findByCondition(map);
 		  int total = stockInfoService.countByCondition(map);
 		  model.addAttribute("stockInfoList",findAll);
-  		model.addAttribute("currenttime",System.currentTimeMillis());
-  		model.addAttribute("total",total);
-  		model.addAttribute("start",start);
-  		model.addAttribute("limit",limit);
-  		model.addAttribute("pageurl", "/stockInfo/getAllStockInfo?1=1");
+	    model.addAttribute("code",code);
+	    model.addAttribute("abbreviation",abbreviation);
+    X.setPageInfo(total,start,limit,"/stockInfo/getAllStockInfo",model,map);
 		  return "stock/stockInfo.index.html";
 	}
 	
