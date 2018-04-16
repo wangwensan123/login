@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<import resource="spring-shiro.xml"/>
+	<import resource="spring-shiro-copy.xml"/>
 	<import resource="spring-redis.xml"/>
 	<!-- <import resource="spring-dubbo-provider.xml"/> -->
 

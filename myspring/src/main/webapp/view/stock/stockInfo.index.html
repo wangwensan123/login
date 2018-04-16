@@ -40,6 +40,7 @@
                   <th>上市日期</th>
                   <th>所属行业</th>
                   <th>公司网址</th>
+                  <th>操作</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,6 +53,9 @@
                    <td>$!f.list_date</td>
                    <td>$!f.industry</td>
                    <td>$!f.website</td>
+                   <td>
+                   		<a href="../stockInfo/getPriceList?code=$!f.code" class="btn btn-primary btn-mini">分价表信息</a>
+                   </td>
                    </tr>
                    #end 
               </tbody>

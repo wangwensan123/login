@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>历史分价表-大单成交</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../view/css/bootstrap.min.css?version=$!version" />
+<link rel="stylesheet" href="../view/css/bootstrap-responsive.min.css?version=$!version" />
+<link rel="stylesheet" href="../view/css/uniform.css?version=$!version" />
+<link rel="stylesheet" href="../view/css/select2.css?version=$!version" />
+<link rel="stylesheet" href="../view/css/matrix-style2.css?version=$!version" />
+<link rel="stylesheet" href="../view/css/matrix-media.css?version=$!version" />
+<link rel="stylesheet" href="../view/font-awesome/css/font-awesome.css?version=$!version" />
+</head>
+<body>
+
+<div id="content">
+  <div id="content-header">
+      <h1>分价表信息</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+            <button class="btn btn-info" onclick="javascrtpt:window.location.href='../stockInfo/getAllStockInfo'">返回列表</button>
+          </div>
+          <div class="widget-content nopadding">
+            <form class="form-horizontal" method="post" action="" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            	　<input type="hidden" name="code"   id="code" value="$!code">
+              <div class="control-group">
+		               						开始日期：<input type="text" name="begindate" required=true  id="mask-date" value ="$!begindate">
+		                					结束日期：<input type="text" name="enddate" required=true id="enddate" value ="$!enddate">
+              </div>
+              <div class="form-actions">
+                <input type="submit" value="查询" class="btn btn-success">
+              </div>
+            </form>
+            <iframe frameborder="0" width="1000" height="500" src="http://market.finance.sina.com.cn/pricehis.php?symbol=$!symbol&startdate=$!begindate&enddate=$!enddate"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../view/js/jquery.min.js"></script> 
+<script src="../view/js/jquery.ui.custom.js"></script> 
+<script src="../view/js/bootstrap.min.js"></script> 
+<script src="../view/js/jquery.uniform.js"></script> 
+<script src="../view/js/select2.min.js"></script> 
+<script src="../view/js/jquery.validate.js"></script> 
+<script src="../view/js/matrix.js"></script> 
+<script src="../view/js/matrix.form_validation.js"></script>
+</body>
+</html>
